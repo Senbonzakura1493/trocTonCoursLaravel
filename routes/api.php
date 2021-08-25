@@ -7,7 +7,8 @@ use App\Http\Controllers\APIPasswordResetRequestController;
 use App\Http\Controllers\APIChangePasswordController;
 
 use App\Http\Controllers\CollaborationsController;
-
+use App\Http\Controllers\SchoolyearsController;
+use App\Http\Controllers\CoursesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,7 +26,12 @@ Route::group([
     'namespace' => 'App\Http\Controllers\CollaborationsController',
 ], function ($router) {
     Route::get('/collaborations', [CollaborationsController::class, 'indexApi']);
+    Route::post('/collaborations/store',[CollaborationsController::class, 'storeApi']);
     Route::get('/collaborations/{user}',[CollaborationsController::class, 'showAPI']);
+
+    Route::get('/schoolyears', [SchoolyearsController::class, 'indexApi']);
+    Route::get('/courses', [CoursesController::class, 'indexApi']);
+    
 });
 
 
