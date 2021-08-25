@@ -24,7 +24,7 @@ class CollaborationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Collaboration
+     * 
      * @param  \App\Models\User
      * @return \Illuminate\Http\Response
     */
@@ -38,6 +38,33 @@ class CollaborationsController extends Controller
             'collaborations_demandees' => $collaborations_demandees,
             'collaborations_acceptees' => $collaborations_acceptees    
         ], 200);
+        
+    }
+
+     /**
+     * Store a newly created resource in storage.
+     * 
+     * @param  \Illuminate\Http\Request 
+     * @return \Illuminate\Http\Response
+    */
+    public function storeApi(Request $request)
+    {
+        // validation to do here
+        request()->validate([
+            'course_id' => 'required',
+            'course_two_id' => 'required',
+            'f_student_id' => 'required',
+            's_student_d' => '',
+            'hours' => 'required',
+            'status'=> 'required',
+            'schoolyear_id'=>'required',
+            'description' =>'required'
+
+        ]);
+        Collaboration::create($request->all());
+        return response()->json([
+            'message' => 'successfully added collaboration',  
+        ], 201);
         
     }
 }
