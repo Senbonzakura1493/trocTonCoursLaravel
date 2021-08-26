@@ -58,7 +58,6 @@ class AuthAPIController extends Controller
                     ['password' => bcrypt($request->password)],
                 ));
 
-        $user ->status = 1;
         $user->save();
 
         return response()->json([
@@ -83,11 +82,17 @@ class AuthAPIController extends Controller
      */
     public function update(Request $request)
     {
-        $user = $request;
-
+        $user = $this->guard()->user();
+        $user->update([
+            'firstname'=>$request->firstname,
+            'lastname'=>$request->lastname,
+            'phone'=>$request->phone,
+            'schoolyear'=>$request->schoolyear,
+          ]);
+        
         return response()->json([
             'message' => 'User successfully updated',
-            'user' => $user
+            'user_info' => $this->guard()->user()
         ], 201);
     }
 

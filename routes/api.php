@@ -47,7 +47,6 @@ Route::group([
     Route::post('/refresh', [AuthAPIController::class, 'refresh']);
     Route::get('/user-profile', [AuthAPIController::class, 'me']);    
     Route::put('/user-profile-update', [AuthAPIController::class, 'update']);    
-
     Route::post('/reset-password-request', [APIPasswordResetRequestController::class, 'sendPasswordResetEmail']);
     Route::post('/change-password', [APIChangePasswordController::class, 'passwordResetProcess']);
 });
