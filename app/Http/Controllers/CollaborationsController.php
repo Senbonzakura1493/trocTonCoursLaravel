@@ -67,4 +67,18 @@ class CollaborationsController extends Controller
         ], 201);
         
     }
+
+    /**
+     * Put modification to the collaboration
+     *@param  \App\Models\Collaboration
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Collaboration $collab,Request $request)
+    {
+        
+        return response()->json([
+            'message' => 'Collaboration successfully updated',
+            'user_info' => $this->guard()->user()
+        ], 201);
+    }
 }

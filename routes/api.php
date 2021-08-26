@@ -26,6 +26,7 @@ Route::group([
     'namespace' => 'App\Http\Controllers\CollaborationsController',
 ], function ($router) {
     Route::get('/collaborations', [CollaborationsController::class, 'indexApi']);
+    Route::put('/collaborations/{id}', [CollaborationsController::class, 'indexApi']);
     Route::post('/collaborations/store',[CollaborationsController::class, 'storeApi']);
     Route::get('/collaborations/{user}',[CollaborationsController::class, 'showAPI']);
 
